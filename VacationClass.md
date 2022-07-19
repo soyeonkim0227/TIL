@@ -18,13 +18,11 @@ spring controller = spring Servlet
 
 [localhost](http://localhost)에 ip주소 넣을 수 있음
 
-hello 부분은 컨텍스트(경로)라 함.
+hello 부분을 ‘컨텍스트패스’라 함.
 
 /(슬래시)까지 포함하면 path라 함.
 
-내 ip주소 : 192.168.0.19
-
-[http을](http://을) 프로토콜이라고 함. http프로토콜이라고 함.
+[http](http://을)를 프로토콜이라고 함. http프로토콜이라고 함.
 
 public + 반환타입 + 소문자 → 메소드
 
@@ -38,8 +36,6 @@ ${serverTime}은 EL(Expression Language)이라고 한다.
 
 Maven(→ xml)과 gradle(→ .gradle)이 있다.
 
-o
-
 2점대 버전엔 xml만.
 
 3점대 버전에서부터는 xml과 java 둘 다 쓸 수 있게됐다. xml과 java를 D(의존성)I(주입)라 한다.
@@ -49,7 +45,7 @@ o
 1. 추가
 2. 빈 등록 (DI) → xml, java / DI는 IOC
 
-디펜덴시 인젝션
+DI = dependency injection
 
 Date d = new(를 안 하면 메모리에 주소를 할당을 안했다 그럼 null이다.) Date( );
 
@@ -82,9 +78,9 @@ MemberVO
 3. 데이터 클래스화 (데이터 객체로 쓸거냐 일반 객체로 쓸거냐 데이터 객체로 쓰게 되면 ~~)
 4. 디버깅용 toString 메소드를 오버라이딩
 
-Source → generate 게터세터 → 제너레이트 해쉬코드 앤 이쿠어스 → 제너레이트 투스트링
+Source → generate 게터세터 → 제너레이트 해쉬코드 앤 이쿠어스 → 제너레이트 투 스트링
 
-database access object
+Database Access Object
 
 회원DAO
 
