@@ -87,3 +87,35 @@ Database Access Object
 [처리 기능들] —(검색, 입력, 수정, 삭제)—> DB
 
 MemberDAO를 DI로.
+
+spring WEB MVC
+
+M : Model
+
+V : view, xxx.jsp
+
+C : 컨트롤러임, xxxController
+
+DB가 Oracle 11g XE이다.
+
+URL, USER, PW
+
+Mybatis
+
+DBCP
+
+cmd창
+
+C:\Users\rf000>sqlplus system/hi123456
+
+SQL> create user spring identified by hi123456 account unlock;
+
+SQL> grant resource,connect to spring;
+
+SQL> conn spring/hi123456;
+
+SQL> create table member(num number primary key, id varchar2(20), pw varchar2(20), name varchar2(30),tel varchar2(30));
+
+SQL> create sequence seq_member;
+
+SQL> select * from member;
