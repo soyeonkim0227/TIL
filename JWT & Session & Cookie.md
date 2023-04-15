@@ -87,13 +87,15 @@ Cookie에 ID, PW와 같은 중요 정보들을 담는게 아니라, 중요 정�
 
 ## 3-2. 인증 과정
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0f0900ea-e01c-42e2-975e-14285d451b24/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247314-31ca2f7a-afb1-4048-b08c-da27d20e83ff.png)
+
 
 ## 3-3. JWT 구조
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6cd05a10-74c4-4e0d-976c-f2bc4b04f3b6/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247329-f6c50361-1d06-457e-878d-7a4b14a11025.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7953e0d-974d-4ea9-8d24-9d31f5ed9a3f/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247337-db005222-0f4d-4d62-b1d3-5c32f395d55d.png)
+
 
 - 각 부분을 구분하기 위한 `.`구분자가 들어감.
 
@@ -152,7 +154,8 @@ Cookie에 ID, PW와 같은 중요 정보들을 담는게 아니라, 중요 정�
 
 JWT를 생성 시 JWT 헤더와 페이로드 정보를 인코딩하고, 둘을 합친 문자열을 비밀 키로 서명함. 이때 대칭키, 비대칭키 방식을 사용할 수 있음.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ba258293-c4f5-472a-bbc6-3d66762a3ff6/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247355-ae04c362-9ead-460f-bf2b-799a1d41d369.png)
+
 
 ## 4-1. 대칭키 암호화
 
@@ -198,7 +201,8 @@ JWT를 생성 시 JWT 헤더와 페이로드 정보를 인코딩하고, 둘을 �
 
 ### API Gateway가 존재한다면?
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/785e14bf-0d4e-43a5-a683-8c1461b7a90d/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247371-e502b65b-b874-41da-ab90-a449699aaa24.png)
+
 
 - 비대칭키 암호화 방식을 사용하면 매번 각 서버에서 필터나 인터셉터를 통해 JWT에 대한 검증을 수행할 것임. 하지만 API Gateway가 존재하면 API GW에서만 검증하면 됨. API GW에서 public key를 통해 검증해도 되지만, 대칭키 방식을 사용해도 API GW에만 private key를 넣어주면 되므로 대칭키 방식의 문제점도 딱히 드러나지 않음.
 
@@ -217,7 +221,8 @@ JWT를 생성 시 JWT 헤더와 페이로드 정보를 인코딩하고, 둘을 �
 
 ## 5-2. 동작 방식
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a423f7d-fa42-4ea8-8d28-87309f0c2b19/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247386-e4b53dd7-2df3-48ce-8743-9a2ab671273d.png)
+
 
 - `Access Token`이 탈취됐을 때 대비를 위해 `Refresh Token`개념을 도입함. 그런데 `Access Token`과 `Refresh Token` 모두 클라이언트에 저장되면 같이 탈취되는거 아닌가? 라는 생각이 듦.
 - 그래서 `Access Token`을 로컬 스토리지 또는 세션 스토리지에 저장하고, `Refresh Token`은 쿠키에 저장하고 보안 옵션들(HTTP Only, Secure Cookies)을 활성화 함.
@@ -265,7 +270,8 @@ JWT를 생성 시 JWT 헤더와 페이로드 정보를 인코딩하고, 둘을 �
 - stateful과 stateless 측면에서 차이점이 존재함. 이는 토큰이 탈취됐을 때 서버에서 능동적으로 이에 대응하여 토큰을 폐기 처리할 수 있냐 없느냐에 직결됨.
 - JWT의 등장 배경을 살펴보면 보안이 뛰어나서가 아니라 마이크로 서비스 아키텍처(MSA)가 도입되면서 주목받기 시작했음.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/296e78f2-7278-4fe9-8b82-74c35f4a15e3/Untitled.png)
+![image](https://user-images.githubusercontent.com/102784901/232247394-820a3456-8a3d-430a-95db-ac6fc1762b63.png)
+
 
 - 위 사진처럼 수천 수만가지의 서버 to 서버 통신이 이루어지는 아키텍처에서 중앙화된 사용자 식별 저장소를 통해 각 API 요청을 인증처리 해야한다면.. 인증 서버만 수백대가 필요할 것임. 그렇다고 아무리 내부 서버 끼리의 통신이라고 인증을 제외할 순 없으니 JWT를 통해 인증을 진행하는 것임.
 - 추가로 앱과 웹을 모두 서비스하는 서버인 경우 웹에서는 Session을 이용하고 앱에서는 토큰을 이용하는 방식으로 별개의 인증방식을 가져가는게 아니라, 두 환경 모두 토큰을 기반으로 인증하여 환경에 구애받지 않고 동일한 API를 이용할 수 있음.
